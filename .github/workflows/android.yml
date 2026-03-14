@@ -1,4 +1,4 @@
-name: Build Android APK
+name: .github/workflows/android.yml
 
 on:
   workflow_dispatch:
