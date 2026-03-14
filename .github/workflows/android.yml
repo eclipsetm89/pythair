@@ -1,4 +1,4 @@
-name: .github/workflows/android.yml
+name: Build Android APK
 
 on:
   workflow_dispatch:
@@ -19,13 +19,13 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Set up Gradle
+      - name: Set up Gradle 8.10.2
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: 8.7
+          gradle-version: 8.10.2
 
       - name: Create Gradle wrapper
-        run: gradle wrapper --gradle-version 8.7
+        run: gradle wrapper --gradle-version 8.10.2
 
       - name: Build debug APK
         run: ./gradlew :app:assembleDebug --stacktrace --no-daemon
@@ -33,5 +33,5 @@ jobs:
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
         with:
-          name: PythAIRStudioMinimal-debug-apk
+          name: PythAIRStudio-debug-apk
           path: app/build/outputs/apk/debug/*.apk
